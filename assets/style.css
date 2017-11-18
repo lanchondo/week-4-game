@@ -1,0 +1,15 @@
+.crystals{
+	display:flex;
+	justify-content: space-around;
+	align-items: center;
+	align-items: center;
+}
+
+.crystal{
+	border: 5px;
+	height: 300px;
+	width: 300px;
+}
+img{
+
+}
