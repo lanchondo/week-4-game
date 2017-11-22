@@ -1,6 +1,6 @@
 	var random_number;
-	var loss;
-	var win;
+	var loss = 0;
+	var win = 0;
 	var previous = 0;
 
 var resetNumber = function () {
@@ -9,8 +9,8 @@ var resetNumber = function () {
 
 	var images = [
 		'http://i0.kym-cdn.com/photos/images/original/000/932/760/d13.png',
-		'https://vignette4.wikia.nocookie.net/steven-universe/images/1/12/ConnieNewIntro.png/revision/latest?cb=20160920145959',
-		'http://48palw1jqfwf1zkjitvyccc1-wpengine.netdna-ssl.com/wp-content/uploads/2017/04/Amethyst_-_S3_Tied_Hair.png',
+		'https://vignette3.wikia.nocookie.net/steven-universe/images/6/68/Pearl-current.png/revision/latest?cb=20160128183731',
+		'https://vignette1.wikia.nocookie.net/steven-universe/images/2/22/Amethyst_-_Before_Reformed.png/revision/latest?cb=20150907161948',
 		'http://vignette2.wikia.nocookie.net/steven-universe/images/4/4c/Garnet-current-deko.png/revision/latest?cb=20160131215907'
 	]
 
@@ -23,13 +23,13 @@ var resetNumber = function () {
 
 		var random = Math.floor(Math.random() * 12) + 1;
 			//console.log(random)
-	
+
 		var crystal = $("<div>");
 		crystal.attr({
 			"class": 'crystal',
-			"steven-random": random,
-
+			"steven-random": random
 		});
+
 		crystal.css({
 			"background-image":"url('" + (images[i]) + "')",
 				"background-size":"cover"
@@ -45,10 +45,12 @@ resetNumber();
 
 		var num = parseInt($(this).attr('steven-random'));
 
-		previous += num
+		previous += num;
 
 		if(previous > random_number){
 			loss--;
+			//console.log("You Lost");
+
 
 			$("#loss").html(loss);
 
@@ -59,13 +61,17 @@ resetNumber();
 
 		else if (previous === random_number){
 			win++;
+			//console.log("You Won");
 
 			$("#win").html(win);
 
 			previous = 0;
+
+			resetNumber();
 		}
 
-		console.log(previous);
+		$("#previous").html(previous);
+		console.log(previous)
 		//console.log($(this).attr('steven-random')); 
 	});
 	//There is a random number that is generated
